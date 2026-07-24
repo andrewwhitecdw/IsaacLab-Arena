@@ -86,6 +86,8 @@ class ArenaEnvBuilder:
         * **False** — applies one layout per environment so per-object reset
           events restore the same layout every time.
         """
+        # Reachability constraints are defined in the task, so apply them before placement.
+        self.arena_env.task.apply_reachability_constraints()
         objects_with_relations = self.arena_env.scene.get_objects_with_relations()
 
         placer_params = self.arena_env.placer_params
